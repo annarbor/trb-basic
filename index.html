@@ -8,6 +8,20 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
 
+<script>
+//Play/Pause control clicked
+$('.btnPlay').on('click', function() {
+   var video = $('#videoShowcase');
+   if(video[0].paused) {
+      video[0].play();
+   }
+   else {
+      video[0].pause();
+   }
+   return false;
+};
+</script>
+
 <style>
 img {
 	max-width:100%
@@ -24,48 +38,70 @@ h1, p, section.introductions {
 <div data-role="page" id="page1" data-theme="c">
 <!-- ヘッダー -->
 <div data-role="header" data-theme="b">
-<h1>TOPページ</h1>
+<h1>Tromboneの基礎練習</h1>
 </div>
 <!-- コンテンツ -->
 <div data-role="content">
 <ul>
-<li><a href="#page2" data-transition="flip">2ページ</a></li>
-<li><a href="#page3">3ページ</a></li>
+<li><a href="#longtone1" data-role="button" data-transition="flip">ロングトーン #1 B♭スケール</a></li>
+<li><a href="#longtone2" data-role="button" data-transition="flip">ロングトーン #2 半音階</a></li>
 </ul>
 </div>
 <!-- フッター -->
 <div data-role="footer" data-theme="b">
-<h4>フッター</h4>
+<!--h4>フッター</h4-->
 </div>
 </div>
 
-<div data-role="page" id="page2" data-theme="c" data-add-back-btn="true">
+<div data-role="page" id="longtone1" data-theme="c" data-add-back-btn="true">
 <!-- ヘッダー -->
 <div data-role="header" data-theme="b">
-<h1>2ページ</h1>
+<h1>ロングトーン #1 B♭長音階</h1>
 </div>
 <!-- コンテンツ -->
 <div data-role="content">
-コンテンツ
+<p>
+Low B♭からチューニングB♭、チューニングB♭からLow B♭までB♭長音階で往復します。
+（4分音符=80、全音符、2小節カウント）
+</p>
 </div>
 <!-- フッター -->
 <div data-role="footer" data-theme="b">
-<h4>フッター</h4>
+<!--h4>フッター</h4-->
 </div>
 </div>
 
-<div data-role="page" id="page3" data-theme="c" data-add-back-btn="true">
+<div data-role="page" id="longtone2" data-theme="c" data-add-back-btn="true">
 <!-- ヘッダー -->
 <div data-role="header" data-theme="b">
-<h1>3ページ</h1>
+<h1>ロングトーン #2 半音階</h1>
 </div>
 <!-- コンテンツ -->
 <div data-role="content">
-コンテンツ
+<p>
+Low B♭からチューニングB♭、チューニングB♭からLow B♭まで半音階で往復します（4分音符=80、全音符、2小節カウント）。
+</p>
+			<div id="html5-showcase" class="showcase">
+				<div id="video" class="container">
+					<div id="videoContents">
+						<div id="videoContainer" class="videoContainer">
+							<div class="videoPlayer" id="videoPlayer">
+								<video id="videoShowcase" width="848" height="352" poster="http://images.apple.com/html5/showcase/video/images/tron_legacy.jpg" autobuffer="autobuffer">
+									<source src="http://movies.apple.com/media/us/html5/showcase/2011/demos/apple-html5-demo-tron-us_848x352.m4v" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+									<source src="/105/media/us/html5/showcase/2011/demos/apple-html5-demo-tron-us_848x352.webm" type='video/webm; codecs="vp8, vorbis"'>
+									<source src="http://movies.apple.com/media/us/html5/showcase/2010/demos/apple-html5-demo-tron_legacy-us-20100601_r848-2cie.mov">
+								</video>
+								<a href="#" class="btnPlay">Play/Pause</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 </div>
 <!-- フッター -->
 <div data-role="footer" data-theme="b">
-<h4>フッター</h4>
+<!--h4>フッター</h4-->
 </div>
 </div>
 
