@@ -8,28 +8,35 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
 
-<script>
-//Play/Pause control clicked
-$('.btnPlay').on('click', function() {
-   var video = $('#videoShowcase');
-   if(video[0].paused) {
-      video[0].play();
+<script type="text/javascript">
+function togglePlay(a) {
+   var mediaElement = document.getElementById(a);
+   if(mediaElement.paused) {
+      mediaElement.play();
    }
    else {
-      video[0].pause();
+      mediaElement.pause();
    }
-   return false;
-};
+}
+
+function play(a) {
+   var mediaElement = document.getElementById(a);
+   mediaElement.play();
+}
+
+function pause(a) {
+   var mediaElement = document.getElementById(a);
+   mediaElement.pause();
+}
+
+function rewind(a) {
+   var mediaElement = document.getElementById(a);
+   mediaElement.currentTime = 0;
+   mediaElement.play();
+}
+
 </script>
 
-<style>
-img {
-	max-width:100%
-}
-h1, p, section.introductions {
-	font-size:0.9em
-}
-</style>
 
 </head>
 
@@ -78,26 +85,23 @@ Low B♭からチューニングB♭、チューニングB♭からLow B♭ま�
 </div>
 <!-- コンテンツ -->
 <div data-role="content">
+	<div id="videoContainer" class="videoContainer">
+		<div class="videoPlayer" id="videoPlayer">
 <p>
 Low B♭からチューニングB♭、チューニングB♭からLow B♭まで半音階で往復します（4分音符=80、全音符、2小節カウント）。
 </p>
-			<div id="html5-showcase" class="showcase">
-				<div id="video" class="container">
-					<div id="videoContents">
-						<div id="videoContainer" class="videoContainer">
-							<div class="videoPlayer" id="videoPlayer">
-								<video id="videoShowcase" width="848" height="352" poster="http://images.apple.com/html5/showcase/video/images/tron_legacy.jpg" autobuffer="autobuffer">
-									<source src="http://movies.apple.com/media/us/html5/showcase/2011/demos/apple-html5-demo-tron-us_848x352.m4v" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-									<source src="/105/media/us/html5/showcase/2011/demos/apple-html5-demo-tron-us_848x352.webm" type='video/webm; codecs="vp8, vorbis"'>
-									<source src="http://movies.apple.com/media/us/html5/showcase/2010/demos/apple-html5-demo-tron_legacy-us-20100601_r848-2cie.mov">
-								</video>
-								<a href="#" class="btnPlay">Play/Pause</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
+			<video id="videoShowcase" currentTime="0 width="848" height="352" poster="http://images.apple.com/html5/showcase/video/images/tron_legacy.jpg" autobuffer="autobuffer">
+				<source src="http://movies.apple.com/media/us/html5/showcase/2011/demos/apple-html5-demo-tron-us_848x352.m4v" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+				<source src="/105/media/us/html5/showcase/2011/demos/apple-html5-demo-tron-us_848x352.webm" type='video/webm; codecs="vp8, vorbis"'>
+				<source src="http://movies.apple.com/media/us/html5/showcase/2010/demos/apple-html5-demo-tron_legacy-us-20100601_r848-2cie.mov">
+			</video>
+		</div>
+		<div class="videoControl">
+<a href="#" data-role="button" data-inline="true" onClick="play('videoShowcase');">再生開始</a>
+<a href="#" data-role="button" data-inline="true" onClick="pause('videoShowcase');">一時停止</a>
+<a href="#" data-role="button" data-inline="true" onClick="rewind('videoShowcase');">最初から</a>
+		</div>
+	</div>
 </div>
 <!-- フッター -->
 <div data-role="footer" data-theme="b">
