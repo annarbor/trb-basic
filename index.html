@@ -35,6 +35,29 @@ function rewind(a) {
    mediaElement.play();
 }
 
+function MyVideo(id, poster, url) {
+   this.id = id;
+   this.poster = poster;
+   this.url = url;
+   this.write = function () {
+
+      var btnstr1 = '<a href="javascript:void(0)" data-role="button" data-inline="true"';
+      document.open();
+      document.write('<div>');
+      document.write('<video id="' + this.id + '" poster="' + this.poster + '" width="360" height="360" currentTime="0" autobuffer="autobuffer">');
+      document.write('<source src="' + this.url + '" type="video/mp4" />');
+      document.write('</video>');
+      document.write('</div>');
+      document.write('<div>');
+      document.write(btnstr1 + 'onClick="play(\'' + this.id + '\');">再生開始</a>');
+      document.write(btnstr1 + 'onClick="pause(\'' + this.id + '\');">一時停止</a>');
+      document.write(btnstr1 + 'onClick="rewind(\'' + this.id + '\');">最初から</a>');
+      document.write('</div>');
+      document.close();
+      return;
+   }
+}
+
 </script>
 
 
@@ -85,6 +108,7 @@ Low B♭からチューニングB♭、チューニングB♭からLow B♭ま�
 </div>
 <!-- コンテンツ -->
 <div data-role="content">
+<!--
 	<div id="videoContainer" class="videoContainer">
 		<div class="videoPlayer" id="videoPlayer">
 <p>
@@ -102,6 +126,20 @@ Low B♭からチューニングB♭、チューニングB♭からLow B♭ま�
 <a href="#" data-role="button" data-inline="true" onClick="rewind('videoShowcase');">最初から</a>
 		</div>
 	</div>
+-->
+
+<p>
+Low B♭からチューニングB♭、チューニングB♭からLow B♭まで半音階で往復します（4分音符=80、全音符、2小節カウント）。
+</p>
+
+<script type="text/javascript">
+
+var video = new MyVideo ("longtone2_video", "./lt1-1.png", "http://movies.apple.com/media/us/html5/showcase/2011/demos/apple-html5-demo-tron-us_848x352.m4v" );
+
+video.write();
+
+</script>
+
 </div>
 <!-- フッター -->
 <div data-role="footer" data-theme="b">
