@@ -35,6 +35,30 @@ function rewind(a) {
    mediaElement.play();
 }
 
+function MyAudio(id, poster, url) {
+   this.id = id;
+   this.poster = poster;
+   this.url = url;
+   this.write = function () {
+
+      var btnstr1 = '<a href="javascript:void(0)" data-role="button" data-theme="b" data-inline="true"';
+      document.open();
+      document.write('<div>');
+      //document.write('<img src="' + this.poster + '" width="360" height="360"/>');
+      document.write('<img src="' + this.poster + '" width="360" />');
+      document.write('<audio id="' + this.id + '" src="' + this.url + '" currentTime="0">');
+      document.write('</audio>');
+      document.write('</div>');
+      document.write('<div>');
+      document.write(btnstr1 + 'onClick="play(\'' + this.id + '\');">再生開始</a>');
+      document.write(btnstr1 + 'onClick="pause(\'' + this.id + '\');">一時停止</a>');
+      document.write(btnstr1 + 'onClick="rewind(\'' + this.id + '\');">最初から</a>');
+      document.write('</div>');
+      document.close();
+      return;
+   }
+}
+
 function MyVideo(id, poster, url) {
    this.id = id;
    this.poster = poster;
@@ -65,7 +89,7 @@ function MyVideo(id, poster, url) {
 
 <body>
 <!-- ぺージ -->
-<div data-role="page" id="page1" data-theme="c">
+<div data-role="page" id="page1" data-theme="b">
 <!-- ヘッダー -->
 <div data-role="header" data-theme="b">
 <h1>Tromboneの基礎練習</h1>
@@ -73,8 +97,10 @@ function MyVideo(id, poster, url) {
 <!-- コンテンツ -->
 <div data-role="content">
 <ul>
-<li><a href="#longtone1" data-role="button" data-transition="flip">ロングトーン #1 B♭スケール</a></li>
-<li><a href="#longtone2" data-role="button" data-transition="flip">ロングトーン #2 半音階</a></li>
+<li><a href="#longtone1" data-role="button" data-transition="flip">ロングトーン #1 F Dur Scale</a></li>
+<li><a href="#longtone2" data-role="button" data-transition="flip">ロングトーン #2 F Dur +5 Scale</a></li>
+<li><a href="#longtone3" data-role="button" data-transition="flip">ロングトーン #3 F Dur +3 Scale</a></li>
+<li><a href="#longtone4" data-role="button" data-transition="flip">ロングトーン #4 B Dur Interval</a></li>
 </ul>
 </div>
 <!-- フッター -->
@@ -83,17 +109,26 @@ function MyVideo(id, poster, url) {
 </div>
 </div>
 
-<div data-role="page" id="longtone1" data-theme="c" data-add-back-btn="true">
+<div data-role="page" id="longtone1" data-theme="b" data-add-back-btn="true">
 <!-- ヘッダー -->
 <div data-role="header" data-theme="b">
-<h1>ロングトーン #1 B♭長音階</h1>
+<h1>ロングトーン #1 F Dur Scale</h1>
 </div>
 <!-- コンテンツ -->
 <div data-role="content">
 <p>
-Low B♭からチューニングB♭、チューニングB♭からLow B♭までB♭長音階で往復します。
-（4分音符=80、全音符、2小節カウント）
+Low FからF、FからLow FまでF長音階で往復します。
+（4分音符=96、2小節カウント）
 </p>
+
+<script type="text/javascript">
+
+var video = new MyAudio ("longtone1_video", "./F2-1.png", "./F-Scale.mp3" );
+
+video.write();
+
+</script>
+
 </div>
 <!-- フッター -->
 <div data-role="footer" data-theme="b">
@@ -101,40 +136,73 @@ Low B♭からチューニングB♭、チューニングB♭からLow B♭ま�
 </div>
 </div>
 
-<div data-role="page" id="longtone2" data-theme="c" data-add-back-btn="true">
+<div data-role="page" id="longtone2" data-theme="b" data-add-back-btn="true">
 <!-- ヘッダー -->
 <div data-role="header" data-theme="b">
-<h1>ロングトーン #2 半音階</h1>
+<h1>ロングトーン #2 F Dur +5 Scale</h1>
 </div>
 <!-- コンテンツ -->
 <div data-role="content">
-<!--
-	<div id="videoContainer" class="videoContainer">
-		<div class="videoPlayer" id="videoPlayer">
-<p>
-Low B♭からチューニングB♭、チューニングB♭からLow B♭まで半音階で往復します（4分音符=80、全音符、2小節カウント）。
-</p>
-			<video id="videoShowcase" currentTime="0 width="848" height="352" poster="http://images.apple.com/html5/showcase/video/images/tron_legacy.jpg" autobuffer="autobuffer">
-				<source src="http://movies.apple.com/media/us/html5/showcase/2011/demos/apple-html5-demo-tron-us_848x352.m4v" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-				<source src="/105/media/us/html5/showcase/2011/demos/apple-html5-demo-tron-us_848x352.webm" type='video/webm; codecs="vp8, vorbis"'>
-				<source src="http://movies.apple.com/media/us/html5/showcase/2010/demos/apple-html5-demo-tron_legacy-us-20100601_r848-2cie.mov">
-			</video>
-		</div>
-		<div class="videoControl">
-<a href="#" data-role="button" data-inline="true" onClick="play('videoShowcase');">再生開始</a>
-<a href="#" data-role="button" data-inline="true" onClick="pause('videoShowcase');">一時停止</a>
-<a href="#" data-role="button" data-inline="true" onClick="rewind('videoShowcase');">最初から</a>
-		</div>
-	</div>
--->
 
 <p>
-Low B♭からチューニングB♭、チューニングB♭からLow B♭まで半音階で往復します（4分音符=80、全音符、2小節カウント）。
+F Dur Scaleの5度上を往復します。
+（4分音符=96、2小節カウント）。
 </p>
 
 <script type="text/javascript">
 
-var video = new MyVideo ("longtone2_video", "./lt1-1.png", "http://movies.apple.com/media/us/html5/showcase/2011/demos/apple-html5-demo-tron-us_848x352.m4v" );
+var video = new MyAudio ("longtone2_video", "./5deg-1.png", "./F-Scale.mp3" );
+
+video.write();
+
+</script>
+
+</div>
+<!-- フッター -->
+<div data-role="footer" data-theme="b">
+<!--h4>フッター</h4-->
+</div>
+</div>
+
+<div data-role="page" id="longtone3" data-theme="b" data-add-back-btn="true">
+<!-- ヘッダー -->
+<div data-role="header" data-theme="b">
+<h1>ロングトーン #3 F Dur +3 Scale</h1>
+</div>
+<!-- コンテンツ -->
+<div data-role="content">
+
+<p>
+F Dur Scaleの3度上を往復します。
+（4分音符=96、2小節カウント）。
+</p>
+
+<script type="text/javascript">
+
+var video = new MyAudio ("longtone3_video", "./3deg-1.png", "./F-Scale.mp3" );
+
+video.write();
+
+</script>
+
+</div>
+<!-- フッター -->
+<div data-role="footer" data-theme="b">
+<!--h4>フッター</h4-->
+</div>
+</div>
+
+<div data-role="page" id="longtone4" data-theme="b" data-add-back-btn="true">
+<!-- ヘッダー -->
+<div data-role="header" data-theme="b">
+<h1>ロングトーン #4 B Dur Interval</h1>
+</div>
+<!-- コンテンツ -->
+<div data-role="content">
+
+<script type="text/javascript">
+
+var video = new MyAudio ("longtone4_video", "./Interval-1.png", "./B-Interval.mp3" );
 
 video.write();
 
