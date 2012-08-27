@@ -1,0 +1,219 @@
+﻿<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Tromboneの基礎練習</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+
+<script type="text/javascript">
+function togglePlay(a) {
+   var mediaElement = document.getElementById(a);
+   if(mediaElement.paused) {
+      mediaElement.play();
+   }
+   else {
+      mediaElement.pause();
+   }
+}
+
+function play(a) {
+   var mediaElement = document.getElementById(a);
+   mediaElement.play();
+}
+
+function pause(a) {
+   var mediaElement = document.getElementById(a);
+   mediaElement.pause();
+}
+
+function rewind(a) {
+   var mediaElement = document.getElementById(a);
+   mediaElement.currentTime = 0;
+   mediaElement.play();
+}
+
+function MyAudio(id, poster, url) {
+   this.id = id;
+   this.poster = poster;
+   this.url = url;
+   this.write = function () {
+
+      var btnstr1 = '<a href="javascript:void(0)" data-role="button" data-theme="b" data-inline="true"';
+      document.open();
+      document.write('<div>');
+      //document.write('<img src="' + this.poster + '" width="360" height="360"/>');
+      document.write('<img src="' + this.poster + '" width="360" />');
+      document.write('<audio id="' + this.id + '" src="' + this.url + '" currentTime="0">');
+      document.write('</audio>');
+      document.write('</div>');
+      document.write('<div>');
+      document.write(btnstr1 + 'onClick="play(\'' + this.id + '\');">再生開始</a>');
+      document.write(btnstr1 + 'onClick="pause(\'' + this.id + '\');">一時停止</a>');
+      document.write(btnstr1 + 'onClick="rewind(\'' + this.id + '\');">最初から</a>');
+      document.write('</div>');
+      document.close();
+      return;
+   }
+}
+
+function MyVideo(id, poster, url) {
+   this.id = id;
+   this.poster = poster;
+   this.url = url;
+   this.write = function () {
+
+      var btnstr1 = '<a href="javascript:void(0)" data-role="button" data-inline="true"';
+      document.open();
+      document.write('<div>');
+      document.write('<video id="' + this.id + '" poster="' + this.poster + '" width="360" height="360" currentTime="0" autobuffer="autobuffer">');
+      document.write('<source src="' + this.url + '" type="video/mp4" />');
+      document.write('</video>');
+      document.write('</div>');
+      document.write('<div>');
+      document.write(btnstr1 + 'onClick="play(\'' + this.id + '\');">再生開始</a>');
+      document.write(btnstr1 + 'onClick="pause(\'' + this.id + '\');">一時停止</a>');
+      document.write(btnstr1 + 'onClick="rewind(\'' + this.id + '\');">最初から</a>');
+      document.write('</div>');
+      document.close();
+      return;
+   }
+}
+
+</script>
+
+
+</head>
+
+<body>
+<!-- ぺージ -->
+<div data-role="page" id="page1" data-theme="b">
+<!-- ヘッダー -->
+<div data-role="header" data-theme="b">
+<h1>Tromboneの基礎練習</h1>
+</div>
+<!-- コンテンツ -->
+<div data-role="content">
+<ul>
+<li><a href="#longtone1" data-role="button" data-transition="flip">ロングトーン #1 F Dur Scale</a></li>
+<li><a href="#longtone2" data-role="button" data-transition="flip">ロングトーン #2 F Dur +5 Scale</a></li>
+<li><a href="#longtone3" data-role="button" data-transition="flip">ロングトーン #3 F Dur +3 Scale</a></li>
+<li><a href="#longtone4" data-role="button" data-transition="flip">ロングトーン #4 B Dur Interval</a></li>
+</ul>
+</div>
+<!-- フッター -->
+<div data-role="footer" data-theme="b">
+<!--h4>フッター</h4-->
+</div>
+</div>
+
+<div data-role="page" id="longtone1" data-theme="b" data-add-back-btn="true">
+<!-- ヘッダー -->
+<div data-role="header" data-theme="b">
+<h1>ロングトーン #1 F Dur Scale</h1>
+</div>
+<!-- コンテンツ -->
+<div data-role="content">
+<p>
+Low FからF、FからLow FまでF長音階で往復します。
+（4分音符=96、2小節カウント）
+</p>
+
+<script type="text/javascript">
+
+var video = new MyAudio ("longtone1_video", "./F2-1.png", "./F-Scale.mp3" );
+
+video.write();
+
+</script>
+
+</div>
+<!-- フッター -->
+<div data-role="footer" data-theme="b">
+<!--h4>フッター</h4-->
+</div>
+</div>
+
+<div data-role="page" id="longtone2" data-theme="b" data-add-back-btn="true">
+<!-- ヘッダー -->
+<div data-role="header" data-theme="b">
+<h1>ロングトーン #2 F Dur +5 Scale</h1>
+</div>
+<!-- コンテンツ -->
+<div data-role="content">
+
+<p>
+F Dur Scaleの5度上を往復します。
+（4分音符=96、2小節カウント）。
+</p>
+
+<script type="text/javascript">
+
+var video = new MyAudio ("longtone2_video", "./5deg-1.png", "./F-Scale.mp3" );
+
+video.write();
+
+</script>
+
+</div>
+<!-- フッター -->
+<div data-role="footer" data-theme="b">
+<!--h4>フッター</h4-->
+</div>
+</div>
+
+<div data-role="page" id="longtone3" data-theme="b" data-add-back-btn="true">
+<!-- ヘッダー -->
+<div data-role="header" data-theme="b">
+<h1>ロングトーン #3 F Dur +3 Scale</h1>
+</div>
+<!-- コンテンツ -->
+<div data-role="content">
+
+<p>
+F Dur Scaleの3度上を往復します。
+（4分音符=96、2小節カウント）。
+</p>
+
+<script type="text/javascript">
+
+var video = new MyAudio ("longtone3_video", "./3deg-1.png", "./F-Scale.mp3" );
+
+video.write();
+
+</script>
+
+</div>
+<!-- フッター -->
+<div data-role="footer" data-theme="b">
+<!--h4>フッター</h4-->
+</div>
+</div>
+
+<div data-role="page" id="longtone4" data-theme="b" data-add-back-btn="true">
+<!-- ヘッダー -->
+<div data-role="header" data-theme="b">
+<h1>ロングトーン #4 B Dur Interval</h1>
+</div>
+<!-- コンテンツ -->
+<div data-role="content">
+
+<script type="text/javascript">
+
+var video = new MyAudio ("longtone4_video", "./Interval-1.png", "./B-Interval.mp3" );
+
+video.write();
+
+</script>
+
+</div>
+<!-- フッター -->
+<div data-role="footer" data-theme="b">
+<!--h4>フッター</h4-->
+</div>
+</div>
+
+</body>
+</html>
