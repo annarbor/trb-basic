@@ -41,7 +41,8 @@ function MyAudio(id, poster, url) {
    this.url = url;
    this.write = function () {
 
-      var btnstr1 = '<a href="javascript:void(0)" data-role="button" data-theme="b" data-inline="true"';
+      //var btnstr1 = '<a href="javascript:void(0)" data-role="button" data-theme="b" data-inline="true"';
+      var btnstr1 = '<a href="javascript:void(0)" data-role="button"';
       document.open();
       document.write('<div>');
       //document.write('<img src="' + this.poster + '" width="360" height="360"/>');
@@ -49,10 +50,10 @@ function MyAudio(id, poster, url) {
       document.write('<audio id="' + this.id + '" src="' + this.url + '" currentTime="0">');
       document.write('</audio>');
       document.write('</div>');
-      document.write('<div>');
-      document.write(btnstr1 + 'onClick="play(\'' + this.id + '\');">再生開始</a>');
-      document.write(btnstr1 + 'onClick="pause(\'' + this.id + '\');">一時停止</a>');
-      document.write(btnstr1 + 'onClick="rewind(\'' + this.id + '\');">最初から</a>');
+      document.write('<div data-role="controlgroup" data-type="horizontal" data-mini="true">');
+      document.write(btnstr1 + 'onClick="play(\'' + this.id + '\');">Play</a>');
+      document.write(btnstr1 + 'onClick="pause(\'' + this.id + '\');">Pause</a>');
+      document.write(btnstr1 + 'onClick="rewind(\'' + this.id + '\');">Rewind</a>');
       document.write('</div>');
       document.close();
       return;
@@ -89,30 +90,31 @@ function MyVideo(id, poster, url) {
 
 <body>
 <!-- ぺージ -->
-<div data-role="page" id="page1" data-theme="b">
+<div data-role="page" id="page1">
 <!-- ヘッダー -->
-<div data-role="header" data-theme="b">
+<div data-role="header">
 <h1>Tromboneの基礎練習</h1>
 </div>
 <!-- コンテンツ -->
 <div data-role="content">
-<ul>
-<li><a href="#longtone1" data-role="button" data-transition="flip">ロングトーン #1 F Dur Scale</a></li>
-<li><a href="#longtone2" data-role="button" data-transition="flip">ロングトーン #2 F Dur +5 Scale</a></li>
-<li><a href="#longtone3" data-role="button" data-transition="flip">ロングトーン #3 F Dur +3 Scale</a></li>
-<li><a href="#longtone4" data-role="button" data-transition="flip">ロングトーン #4 B Dur Interval</a></li>
+<ul data-role="listview">
+<li><a href="#lt1">F Dur Scale</a></li>
+<li><a href="#lt2">F Dur +3 Scale</a></li>
+<li><a href="#lt3">F Dur +4 Scale</a></li>
+<li><a href="#lt4">F Dur +5 Scale</a></li>
+<li><a href="#lt5">B Dur Interval</a></li>
 </ul>
 </div>
 <!-- フッター -->
-<div data-role="footer" data-theme="b">
+<div data-role="footer">
 <!--h4>フッター</h4-->
 </div>
 </div>
 
-<div data-role="page" id="longtone1" data-theme="b" data-add-back-btn="true">
+<div data-role="page" id="lt1" data-add-back-btn="true">
 <!-- ヘッダー -->
-<div data-role="header" data-theme="b">
-<h1>ロングトーン #1 F Dur Scale</h1>
+<div data-role="header">
+<h1>F Dur Scale</h1>
 </div>
 <!-- コンテンツ -->
 <div data-role="content">
@@ -123,51 +125,22 @@ Low FからF、FからLow FまでF長音階で往復します。
 
 <script type="text/javascript">
 
-var video = new MyAudio ("longtone1_video", "./F2-1.png", "./F-Scale.mp3" );
-
+var video = new MyAudio ("lt1v", "./F2-1.png", "./F-Scale.mp3" );
 video.write();
 
 </script>
 
 </div>
 <!-- フッター -->
-<div data-role="footer" data-theme="b">
+<div data-role="footer">
 <!--h4>フッター</h4-->
 </div>
 </div>
 
-<div data-role="page" id="longtone2" data-theme="b" data-add-back-btn="true">
+<div data-role="page" id="lt2" data-add-back-btn="true">
 <!-- ヘッダー -->
-<div data-role="header" data-theme="b">
-<h1>ロングトーン #2 F Dur +5 Scale</h1>
-</div>
-<!-- コンテンツ -->
-<div data-role="content">
-
-<p>
-F Dur Scaleの5度上を往復します。
-（4分音符=96、2小節カウント）。
-</p>
-
-<script type="text/javascript">
-
-var video = new MyAudio ("longtone2_video", "./5deg-1.png", "./F-Scale.mp3" );
-
-video.write();
-
-</script>
-
-</div>
-<!-- フッター -->
-<div data-role="footer" data-theme="b">
-<!--h4>フッター</h4-->
-</div>
-</div>
-
-<div data-role="page" id="longtone3" data-theme="b" data-add-back-btn="true">
-<!-- ヘッダー -->
-<div data-role="header" data-theme="b">
-<h1>ロングトーン #3 F Dur +3 Scale</h1>
+<div data-role="header">
+<h1>ロングトーン #2 F Dur +3 Scale</h1>
 </div>
 <!-- コンテンツ -->
 <div data-role="content">
@@ -179,38 +152,92 @@ F Dur Scaleの3度上を往復します。
 
 <script type="text/javascript">
 
-var video = new MyAudio ("longtone3_video", "./3deg-1.png", "./F-Scale.mp3" );
-
+var video = new MyAudio ("lt2v", "./3deg-1.png", "./F-Scale.mp3" );
 video.write();
 
 </script>
 
 </div>
 <!-- フッター -->
-<div data-role="footer" data-theme="b">
+<div data-role="footer">
 <!--h4>フッター</h4-->
 </div>
 </div>
 
-<div data-role="page" id="longtone4" data-theme="b" data-add-back-btn="true">
+<div data-role="page" id="lt3" data-add-back-btn="true">
 <!-- ヘッダー -->
-<div data-role="header" data-theme="b">
-<h1>ロングトーン #4 B Dur Interval</h1>
+<div data-role="header">
+<h1>ロングトーン #3 F Dur +4 Scale</h1>
+</div>
+<!-- コンテンツ -->
+<div data-role="content">
+
+<p>
+F Dur Scaleの4度上を往復します。
+（4分音符=96、2小節カウント）。
+</p>
+
+<script type="text/javascript">
+
+var video = new MyAudio ("lt3v", "./4deg-1.png", "./F-Scale.mp3" );
+video.write();
+
+</script>
+
+</div>
+<!-- フッター -->
+<div data-role="footer">
+<!--h4>フッター</h4-->
+</div>
+</div>
+
+<div data-role="page" id="lt4" data-add-back-btn="true">
+<!-- ヘッダー -->
+<div data-role="header">
+<h1>ロングトーン #4 F Dur +5 Scale</h1>
+</div>
+<!-- コンテンツ -->
+<div data-role="content">
+
+<p>
+F Dur Scaleの5度上を往復します。
+（4分音符=96、2小節カウント）。
+</p>
+
+<script type="text/javascript">
+
+var video = new MyAudio ("lt4v", "./5deg-1.png", "./F-Scale.mp3" );
+video.write();
+
+</script>
+
+</div>
+<!-- フッター -->
+<div data-role="footer">
+<!--h4>フッター</h4-->
+</div>
+</div>
+
+<div data-role="page" id="lt5" data-add-back-btn="true">
+<!-- ヘッダー -->
+<div data-role="header">
+<h1>ロングトーン #5 B Dur Interval</h1>
 </div>
 <!-- コンテンツ -->
 <div data-role="content">
 
 <script type="text/javascript">
 
-var video = new MyAudio ("longtone4_video", "./Interval-1.png", "./B-Interval.mp3" );
+var video = new MyAudio ("lt5v", "./Interval-1.png", "./B-Interval.mp3" );
 
 video.write();
 
 </script>
 
+
 </div>
 <!-- フッター -->
-<div data-role="footer" data-theme="b">
+<div data-role="footer">
 <!--h4>フッター</h4-->
 </div>
 </div>
