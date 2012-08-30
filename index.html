@@ -42,7 +42,7 @@ function MyAudio(id, poster, url) {
    this.write = function () {
 
       //var btnstr1 = '<a href="javascript:void(0)" data-role="button" data-theme="b" data-inline="true"';
-      var btnstr1 = '<a href="javascript:void(0)" data-role="button"';
+      var btnstr1 = '<a href="javascript:void(0)" data-role="button" data-inline="true"';
       document.open();
       document.write('<div>');
       //document.write('<img src="' + this.poster + '" width="360" height="360"/>');
@@ -50,8 +50,9 @@ function MyAudio(id, poster, url) {
       document.write('<audio id="' + this.id + '" src="' + this.url + '" currentTime="0">');
       document.write('</audio>');
       document.write('</div>');
-      document.write('<div data-role="controlgroup" data-type="horizontal" data-mini="true">');
-      document.write(btnstr1 + 'onClick="play(\'' + this.id + '\');">Play</a>');
+      //document.write('<div data-role="controlgroup" data-type="horizontal" data-mini="true">');
+      document.write('<div data-mini="true">');
+      document.write(btnstr1 + 'onClick="play(\'' + this.id + '\');"><span><img class="play"/>Play</span></a>');
       document.write(btnstr1 + 'onClick="pause(\'' + this.id + '\');">Pause</a>');
       document.write(btnstr1 + 'onClick="rewind(\'' + this.id + '\');">Rewind</a>');
       document.write('</div>');
@@ -85,6 +86,16 @@ function MyVideo(id, poster, url) {
 
 </script>
 
+<style>
+
+.play {
+    background-image: url(./play.png);
+    //text-indent: -1000px;
+    width: 15px;
+    height: 15px;
+}
+
+</style>
 
 </head>
 
@@ -108,6 +119,9 @@ function MyVideo(id, poster, url) {
 <!-- フッター -->
 <div data-role="footer">
 <!--h4>フッター</h4-->
+(c)2012 Kaz
+<a href="#">Terms of Service</a>
+<a href="#">Privacy Policy</a>
 </div>
 </div>
 
